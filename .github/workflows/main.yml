@@ -36,4 +36,19 @@ jobs:
           tags: |
             timattos/kube-news:latest
             timattos/kube-news:${{github.run_number}}
-         
+  CD:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Azure Kubernetes set context
+        uses: Azure/aks-set-context@v3
+        with:
+          method: kubeconfig
+          kubeconfig: ${{secrets.K8S_CONFIG}}
+          
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v4.3
+        with: 
+          images: timattos/kube-news:${{github.run_number}}
+          manifests: |
+            k8s/deployment.yaml
