@@ -35,5 +35,5 @@ jobs:
           push: true
           tags: |
             TiMattos/kube-news:latest
-            TiMattos/kube-news:${{github_number}}
+            TiMattos/kube-news:${{github_run_number}}
          
