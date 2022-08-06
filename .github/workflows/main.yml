@@ -34,6 +34,6 @@ jobs:
           context: ./src
           push: true
           tags: |
-            TiMattos/kube-news:latest
-            TiMattos/kube-news:${{github.run_number}}
+            timattos/kube-news:latest
+            timattos/kube-news:${{github.run_number}}
          
